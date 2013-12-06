@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %title Octo Follow
+    %link{ rel: 'stylesheet', href: stylesheet_path('application.css') }/
+
+  %body
+    %a{:href => "#", :id => "forkit"} Fork it!
+    #header
+      .in
+        %a{:href => "#", :class => "anchor"} Login
+        %a{:href => "#", :class => "anchor"} Friends
+        %a{:href => "#", :class => "anchor"} Organizations
+    = yield

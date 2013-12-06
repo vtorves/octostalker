@@ -1,0 +1,95 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+/*******************************************
+					    Main
+					    *******************************************/
+
+.button {
+    appearance: none;
+    transition: all 250ms ease;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+    background: #6DA67A;
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 21px 25px 24px;
+    line-height: 1;
+    cursor: pointer;
+    margin: 10px 15px;
+    border: 0 none;
+}
+
+.button:hover {
+    background: #86C28B;
+}
+
+section {
+    float:left;
+    width:100%;
+    padding: 50px 0;
+    background: #fff url('../images/pattern-light.png') repeat left top;
+
+    &:nth-child(odd) {
+	background: rgba(150,191,72,.9);
+        border-top: 1px solid #c8c8c8;
+        border-bottom: 1px solid #c8c8c8;
+
+        p {color:#fff !important}
+        h4 {color:#fff !important}
+    }
+}
+
+h3 {
+    float:left;
+    width:100%;
+    color:#859987;
+    font: normal 36px/50px "Trebuchet MS", Arial, sans-serif;
+    margin-bottom: 15px;
+}
+
+h4 {
+    width:100%;
+    color:#414141;
+    margin-bottom: 15px;
+    font: bold 24px/30px "Trebuchet MS", Arial, sans-serif;
+}
+
+
+p {
+    margin: 10px 0;
+}
+
+ol {
+    list-style-position: inside;
+    margin-bottom:20px;
+
+    strong {font-family: monospace;}
+}
+
+code {
+    border: 2px solid #5a9b9b;
+    background:#fff;
+    color:#4A4857;
+    padding: 7px 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+    display:block;
+}
+
+#main {
+    padding-top: 100px;
+    text-align: center;
+
+    h2 {
+        float:left;
+        width:100%;
+        color:#859987;
+        font: bold 72px/100px "Trebuchet MS", Arial, sans-serif;
+    }
+}
