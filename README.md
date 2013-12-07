@@ -8,7 +8,7 @@ The app is not live yet, still waiting for a good design
 
 Create a new github app. [here](https://github.com/settings/applications/new)
 
-Create a `.env` file on the root of the project, and the apps keys:
+Create a `.env` file on the root of the project:
 
 ```
 GITHUB_KEY=<Client ID>
