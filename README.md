@@ -1,8 +1,8 @@
 # OctoFollow
 
-An app to follow friends and organizations on github
+http://octo-follow.herokuapp.com/
 
-The app is not live yet, still waiting for a good design
+An app to follow friends and organizations on github
 
 ## How to run locally
 
