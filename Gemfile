@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-gem 'shotgun', :group=>:development
-
 gem 'rack-cache'
 gem 'sinatra', :require => 'sinatra/base'
 gem 'haml'
@@ -15,4 +13,8 @@ gem 'bootstrap-sass'
 gem 'coffee-script'
 
 gem 'uglifier'
-gem "octokit", "~> 2.0"
+gem 'octokit', '~> 2.0'
+gem 'omniauth-github'
+
+gem 'foreman'
+gem 'thin'

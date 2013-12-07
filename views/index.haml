@@ -4,4 +4,23 @@
     .in
       %h2 About this thing
       %p blablalbfdlfdsl
-      %a.button.anchor{:href => "#"} Signin
+      - if current_user
+        %img{src: current_user[:avatar]}
+      - else
+        %a.button.anchor{:href => "/auth/github"} Signin
+
+%section#friends
+  %h1
+    .in
+      %h2 About this thing
+      .result empty
+      %a.button-github.friends{href: "#"} Follow friends back
+
+- if @organizations
+  %section#organizations
+    %h1
+      .in
+        %h2 Organizations
+        - @organizations.each do |org|
+          %a.button-github{data: {organization: org.login}}
+            %img{src: org.rels[:avatar].href, width: 100, height: 100}

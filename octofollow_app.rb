@@ -26,17 +26,65 @@ class OctoFollowApplication < Sinatra::Base
     end
 
     set :haml, { :format => :html5 }
-  end
 
-  before do
-    expires 500, :public, :must_revalidate
+    enable :sessions, :logging
+
+    use OmniAuth::Builder do
+      provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user:follow"
+    end
   end
 
   get '/' do
+    if client
+      client.organizations.each do |org|
+        org.rels[:avatar].href
+      end
+      @organizations = client.organizations
+    end
+
     haml :index, layout: :'layouts/application'
+  end
+
+  get '/auth/github/callback' do
+    session[:auth] ||= {}
+    auth = env['omniauth.auth']
+    session[:auth][:uid] = auth['uid']
+    session[:auth][:token] = auth['credentials']['token']
+    session[:auth][:avatar] = auth[:extra][:raw_info][:avatar_url]
+    redirect to('/')
+  end
+
+  post '/friends.do' do
+    client.organizations.map(&:login)
+  end
+
+  post '/organization.do' do
+    content_type :json
+    counter = 0
+    org = params[:org]
+    client.organization_members(org).each do |member|
+      login = member.login
+      unless client.follows?(login)
+        if client.follow(login)
+          p "Following #{login}"
+          counter += 1
+        end
+      end
+    end
+
+    { followed: counter }.to_json
+  end
+
+  def client
+    return nil unless session[:auth]
+    @client ||= Octokit::Client.new(access_token: session[:auth][:token])
   end
 
   helpers do
     include Sprockets::Helpers
+
+    def current_user
+      session[:auth]
+    end
   end
 end
