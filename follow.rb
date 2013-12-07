@@ -1,10 +1,16 @@
 require 'octokit'
-
 token = ENV['GITHUB_TOKEN']
-client = Octokit::Client.new :access_token => token
+client = Octokit::Client.new(access_token: token)
+client.configure do |config|
+  config.per_page = 100
+  config.auto_paginate = true
+end
 
-p client.organizations.map(&:login)
+followers = client.followers.map(&:login)
+p followers
+p followers.count
 
+#p client.organizations.map(&:login)
 #each do |org|
 #p  org.login
 #end

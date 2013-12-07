@@ -55,29 +55,46 @@ class OctoFollowApplication < Sinatra::Base
   end
 
   post '/friends.do' do
-    client.organizations.map(&:login)
+    content_type :json
+    client or (return 403)
+
+    counter = follow_users client.followers
+
+    {followed: counter}.to_json
   end
 
   post '/organization.do' do
     content_type :json
-    counter = 0
-    org = params[:org]
-    client.organization_members(org).each do |member|
-      login = member.login
-      unless client.follows?(login)
-        if client.follow(login)
-          p "Following #{login}"
-          counter += 1
-        end
-      end
-    end
+    client or (return 403)
 
-    { followed: counter }.to_json
+    org = params[:org]
+    counter = follow_users client.organization_members(org)
+
+    {followed: counter}.to_json
+  end
+
+  post '/me.do' do
+    content_type :json
+    client or (return 403)
+
+    {success: client.follow('arthurnn')}.to_json
   end
 
   def client
     return nil unless session[:auth]
     @client ||= Octokit::Client.new(access_token: session[:auth][:token])
+  end
+
+  def follow_users(users)
+    counter = 0
+    users.each do |member|
+      login = member.login
+      next if login == client.login
+      if !client.follows?(login) && client.follow(login)
+        counter += 1
+      end
+    end
+    counter
   end
 
   helpers do
