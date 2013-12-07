@@ -13,7 +13,7 @@ gem 'bootstrap-sass'
 gem 'coffee-script'
 
 gem 'uglifier'
-gem 'octokit', '~> 2.0'
+gem 'octokit', '~> 2.6.3'
 gem 'omniauth-github'
 
 gem 'foreman'
