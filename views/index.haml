@@ -1,26 +1,34 @@
 
 %section#main
-  %h1
-    .in
-      %h2 About this thing
-      %p blablalbfdlfdsl
-      - if current_user
-        %img{src: current_user[:avatar]}
-      - else
-        %a.button.anchor{:href => "/auth/github"} Signin
+  .in
+    %h2 Octo Follow
+    %h3 What can I do in here?
+    %p You can follow everyone that is following you.
+    %p You can follow everyone from your organization.
+    - if current_user
+      %img{src: current_user[:avatar]}
+    - else
+      %a.button.anchor{:href => "/auth/github"} Signin
 
 %section#friends
-  %h1
-    .in
-      %h2 About this thing
-      .result empty
-      %a.button-github.friends{href: "#"} Follow friends back
+  .in
+    %h2 Be nice, and follow back who follows you.
+    .alert.alert-success.hidden
+    .alert.alert-danger.hidden
+      %strong Holy guacamole!
+      An error has occurred
+    %a.button-github.friends Follow friends back
+    %span.waiting.hidden Waiting...
 
 - if @organizations
   %section#organizations
-    %h1
-      .in
-        %h2 Organizations
-        - @organizations.each do |org|
-          %a.button-github{data: {organization: org.login}}
-            %img{src: org.rels[:avatar].href, width: 100, height: 100}
+    .in
+      %h2 Organizations
+      .alert.alert-success.hidden
+      .alert.alert-danger.hidden
+        %strong Holy guacamole!
+        An error has occurred
+      %span.waiting.hidden Waiting...
+      - @organizations.each do |org|
+        %a.button-github{data: {organization: org.login}}
+          %img{src: org.rels[:avatar].href, width: 100, height: 100}

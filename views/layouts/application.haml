@@ -7,11 +7,6 @@
 
   %body
     %a{:href => "#", :id => "forkit"} Fork it!
-    #header
-      .in
-        %a{:href => "#", :class => "anchor"} Login
-        %a{:href => "#", :class => "anchor"} Friends
-        %a{:href => "#", :class => "anchor"} Organizations
     = yield
     %script{src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'}
     %script{src: javascript_path('application.js')}
