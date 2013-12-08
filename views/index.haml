@@ -29,6 +29,7 @@
         %strong Holy guacamole!
         An error has occurred
       %span.waiting.hidden Waiting...
-      - @organizations.each do |org|
-        %a.button-github{data: {organization: org.login}}
-          %img{src: org.rels[:avatar].href, width: 100, height: 100}
+      .orgs
+        - @organizations.each do |org|
+          %a.button-github{data: {organization: org.login}}
+            %img{src: "#{org.rels[:avatar].href}&s=440", width: 220, height: 220}
