@@ -34,6 +34,10 @@ class OctostalkerApplication < Sinatra::Base
     end
   end
 
+  error 403 do
+    {message:'Sorry, you have to login first.'}.to_json
+  end
+
   get '/' do
     if client
       client.organizations.each do |org|
@@ -57,9 +61,7 @@ class OctostalkerApplication < Sinatra::Base
   post '/friends.do' do
     content_type :json
     client or (return 403)
-
     counter = follow_users client.followers
-
     {followed: counter}.to_json
   end
 
@@ -67,16 +69,19 @@ class OctostalkerApplication < Sinatra::Base
     content_type :json
     client or (return 403)
 
-    org = params[:org]
-    counter = follow_users client.organization_members(org)
-
+    begin
+      org = params[:org]
+      counter = follow_users client.organization_members(org)
+    rescue Octokit::NotFound
+      status 404
+      return {message: 'Organization not found'}.to_json
+    end
     {followed: counter}.to_json
   end
 
   post '/me.do' do
     content_type :json
     client or (return 403)
-
     {success: client.follow('arthurnn')}.to_json
   end
 
