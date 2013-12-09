@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require
 
-class OctoFollowApplication < Sinatra::Base
+class OctostalkerApplication < Sinatra::Base
   set :root,          File.dirname(__FILE__)
   set :assets,        Sprockets::Environment.new(root)
   set :precompile,    [ /\w+\.(?!js|scss).+/, /application.(css|js)$/ ]

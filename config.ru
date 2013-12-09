@@ -1,11 +1,11 @@
-require './octofollow_app'
+require './octostalker'
 
 use Rack::Cache, verbose: false
 
-map OctoFollowApplication.assets_prefix do
-  run OctoFollowApplication.assets
+map OctostalkerApplication.assets_prefix do
+  run OctostalkerApplication.assets
 end
 
 map '/' do
-  run OctoFollowApplication
+  run OctostalkerApplication
 end
