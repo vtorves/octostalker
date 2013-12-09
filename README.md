@@ -1,6 +1,6 @@
 # Octostalker
 
-http://octostalker.herokuapp.com/
+http://octostalker.com/
 
 An app to follow friends and organizations on github
 
