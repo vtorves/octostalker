@@ -33,3 +33,7 @@
         - @organizations.each do |org|
           %a.button-github{data: {organization: org.login}}
             %img{src: "#{org.rels[:avatar].href}&s=440", width: 220, height: 220}
+%section#me
+  .in
+    %h5 Follow me
+    %a{href: 'http://twitter.com/arthurnn'} @arthurnn
