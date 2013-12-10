@@ -2,11 +2,33 @@
 %html
   %head
     %meta{:charset => "utf-8"}
-    %title Octostalker
-    %link{ rel: 'stylesheet', href: stylesheet_path('application.css') }/
+    %meta{:viewport => "width=device-width"}
+    %title Octostalker - Be nice, and follow back who follows you
+
+    %link{ rel: "dns-prefetch", href: "//ajax.googleapis.com"}
+    %link{ rel: 'stylesheet', href: stylesheet_path('application.css') }
+
+    %script{src: javascript_path('modernizr.js')}
 
   %body
-    %a{:href => "https://github.com/arthurnn/octostalker", :id => "forkit"} Fork it!
-    = yield
-    %script{src: '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'}
+    %a{:href => "https://github.com/arthurnn/octostalker", :id => "forkit", target: "_blank"} Fork it!
+    %div.msg#msg
+      %div.inner
+        %p
+    %div.msg.loading
+      %div.inner
+        %p
+          %img{src: "/assets/ajax.gif", alt: "Wait just a sec, we are"} Loading...
+    %div#wrapper
+      %div#content
+        = yield
+        .clear
+      %footer#footer
+        %div.inner
+          %p
+            %a{href: "https://github.com/arthurnn/octostalker/blob/master/LICENSE", target: "_blank"} MIT Licence @arthurnn
+          %p
+            Be nice, follow me to
+            %a{href:"https://github.com/arthurnn", rel: "me external", target: "_blank"} @arthurnn
+    %script{src: javascript_path('plugins.js')}
     %script{src: javascript_path('application.js')}

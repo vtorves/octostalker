@@ -8,12 +8,19 @@ class OctostalkerApplication < Sinatra::Base
   set :precompile,    [ /\w+\.(?!js|scss).+/, /application.(css|js)$/ ]
   set :assets_prefix, '/assets'
   set :digest_assets, false
-  set(:assets_path)   { File.join public_folder, assets_prefix }
+  set :assets_path,   File.join(root, assets_prefix)
 
   configure do
     # Setup Sprockets
     %w{javascripts stylesheets images font}.each do |type|
       assets.append_path "assets/#{type}"
+    end
+
+    Compass.configuration do |compass|
+      compass.project_path = settings.assets_path
+      compass.images_dir = 'images'
+      compass.output_style = ':expanded'
+      compass.relative_assets = true
     end
 
     # Configure Sprockets::Helpers (if necessary)
