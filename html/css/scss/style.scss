@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+@import 'compass';
+
+$geral-spacing:1px;
+$geral-layout:smart;
+@import "geral/*.png";
+
+$fontFamily: Collegia, "Trebuchet MS", Arial, sans-serif;
+$fontTrebuchet: "Trebuchet MS", Arial, sans-serif;
+
+@font-face {
+	font-family: 'Collegia';
+	src: url('fonts/collegia-webfont.eot');
+	src: url('fonts/collegia-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/collegia-webfont.woff') format('woff'),
+		 url('fonts/collegia-webfont.ttf') format('truetype'),
+		 url('fonts/collegia-webfont.svg#collegiateregular') format('svg');
+	font-weight: normal; font-style: normal;
+}
+
+/*******************************************
+				   Globais
+*******************************************/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure,  footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video, button, input, select, textarea { margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+html { overflow-y: scroll; }
+body { font:13px/1.231 sans-serif; *font-size:small; }
+body, select, input, textarea { color: #444; }
+
+outline { border:none; }
+
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+ol { list-style-type: decimal; }
+table { border-collapse:collapse; border-spacing:0; }
+nav ul, nav li { list-style:none; }
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ""; content: none; }
+a { font-size:100%; vertical-align:baseline; background:transparent; }
+
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+del { text-decoration: line-through; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+pre {  padding: 15px;  white-space: pre;  white-space: pre-wrap;  white-space: pre-line;  word-wrap: break-word; }
+strong { font-weight: bold; }
+small { font-size: 85%; }
+
+select, input, textarea, button { font:99% sans-serif; }
+input, select { vertical-align: middle; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+table { border-collapse: collapse; border-spacing: 0; }
+.ie7 img { -ms-interpolation-mode: bicubic; }
+button {  width: auto; overflow: visible; }
+textarea { overflow: auto; }
+.ie6 legend, .ie7 legend { margin-left: -7px; }
+
+a:hover, a:active { outline: none; }
+::-moz-selection{ background: #000; color:#fff; text-shadow: none; }
+::selection { background:#000; color:#fff; text-shadow: none; }
+a:link { -webkit-tap-highlight-color: #444; }
+
+input:valid, textarea:valid   {  }
+input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red; }
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
+
+html {height: 100%;}
+body {min-width:990px; font: normal 14px/21px "Trebuchet MS", Arial, sans-serif; height: 100%;}
+.innner {width:960px; padding: 0 15px; margin: 0 auto; position:relative;}
+
+#wrapper {height: auto; min-height: 100%; position: relative; width: 100%;}
+#content {height: 100%; padding-bottom: 65px;}
+.clear {clear: both;}
+
+#forkit {float:left; position: fixed; right:0; top:0; width: 149px; height: 149px; @include geral-sprite('forkit'); text-indent: -9999em; z-index:2;}
+.btn {
+	float:left;
+	padding: 4px 25px;
+	border: 1px solid #bebebe;
+	background-color: #f8f8f8;
+	@include filter-gradient(#f8f8f8, #ededed, vertical);
+	@include background-image(linear-gradient(top, #f8f8f8 0%,#ededed 100%));
+	border-radius: 5px;
+	color:#555;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #fff;
+	font: bold 14px/21px "Trebuchet MS", Arial, sans-serif;
+}
+
+/*******************************************
+				   Header
+*******************************************/
+.msg {float:left; width:100%; border-bottom: 2px solid #BCE8F1; position: fixed; top:0; left:0; background-color: #D9EDF7; color: #31708F; padding: 10px 0;z-index: 1; display:none;}
+.msg.sucess {background-color: #DFF0D8; border-color: #D6E9C6; color: #3C763D;}
+.msg.error {background-color: #F2DEDE; border-color: #EBCCD1; color: #A94442;}
+.msg.loading { background-color: #FCF8E3; border-color: #FAEBCC; color: #8A6D3B}
+.msg.loading img {float:left; margin: 2px 5px 0 0;}
+
+#header {float:left; width:100%; height: 372px; background:#fff url("../images/bg-topo.png") no-repeat center top;}
+#header .container {float:left; margin: 65px 0 0 0;}
+h1 {float:left; width:100%; text-transform: uppercase; font: normal 65px/65px $fontFamily; color:#000;}
+#header p {float:left; width:100%; font: normal 14px/21px $fontTrebuchet;}
+.profile {float:left; margin-top: 20px;}
+.profile img {float:left; border-radius: 5px;}
+.profile img + a {margin: 133px 0 0 10px;}
+
+/*******************************************
+				   Footer
+*******************************************/
+
+#footer {float:left; width:100%; background: #ededed; padding: 10px 0; position: absolute; bottom: 0; left:0;}
+#footer p {float:left; color:#555; font: normal 12px/18px "Trebuchet MS", Arial, sans-serif; margin:0;}
+#footer p + p {float:right;}
+#footer a {color:#555; font-weight: bold; text-decoration: none;}
+
+/*******************************************
+				   Main
+*******************************************/
+
+#explain {float:left; width:100%; background:#ededed; padding: 20px 0 30px 0;}
+.pata {float:left; width:52px; height: 69px; position: absolute; top:-20px; right: 80px; @include geral-sprite('pata');}
+.container {float:left; width: 50%;}
+#explain h2 {float:left; width:100%; color:#555; font: normal 18px/27px $fontFamily; text-transform: uppercase; margin-bottom: 30px; }
+.gitmark-big {float:left; width: 120px; height: 120px; @include geral-sprite('mark-big'); }
+#explain .follow {float:left; width: 80px; height: 69px; @include geral-sprite('setas'); margin: 25px 20px;}
+.orgusers {float:left; width:180px;}
+.orgusers span {float:left; width: 32px; height: 32px; @include geral-sprite('mark-small'); margin: 5px;}
+
+#follow-everyone {float:left; width:100%;}
+#follow-everyone h2 {float:left; width:100%; margin: 30px 0 15px 0; color:#555; font: normal 36px/40px $fontFamily; text-transform: uppercase; }
+#follow-everyone h2 span {float:left; margin-right:20px;}
+#follow-everyone h2 a {text-transform: none; margin-top: 3px;}
+
+#friends {float:left; width:100%; list-style:none;}
+#friends li {float:left; width: 100px; height: 100px; margin: 10px 20px 10px 0; position: relative;}
+#friends a {float:left; width: 100px; height: 100px;border-radius:5px; overflow:hidden; }
+#friends span {float:left; width: 16px; height: 16px; position: absolute; bottom: 7px; right: 7px; }
+#friends span.yes, #friends span.follow {@include geral-sprite('ok');}
+#friends span.no {@include geral-sprite('unfollow');}
+
+.tooltip {position: absolute; z-index: 1030; display: block; visibility: visible; font-size: 12px; line-height: 1.4; opacity: 0; filter: alpha(opacity=0);}
+.tooltip.in {opacity: 0.9; filter: alpha(opacity=90);}
+.tooltip.bottom {margin-top: 3px; padding: 5px 0;}
+.tooltip-inner {max-width: 200px; padding: 3px 8px; color: #ffffff; text-align: center; text-decoration: none; background-color: #000000; border-radius: 4px;}
+.tooltip-arrow {position: absolute; width: 0; height: 0; border-color: transparent; border-style: solid;}
+.tooltip.bottom .tooltip-arrow {top: 0; left: 50%; margin-left: -5px; border-width: 0 5px 5px; border-bottom-color: #000000;}
