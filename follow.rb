@@ -6,9 +6,9 @@ client.configure do |config|
   config.auto_paginate = true
 end
 
-followers = client.followers.map(&:login)
-p followers
-p followers.count
+#followers = client.followers.map(&:login)
+#p followers
+#p followers.count
 
 #p client.organizations.map(&:login)
 #each do |org|
