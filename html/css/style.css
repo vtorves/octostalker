@@ -524,7 +524,7 @@ section h2 a {
   float: left;
   width: 120px;
   height: 120px;
-  background: #ededed url("../images/geral/mark-big.png") no-repeat left top;
+  background: #ededed url("../images/mark-big.png") no-repeat left top;
 }
 
 /* line 141, scss/style.scss */
@@ -547,7 +547,7 @@ section h2 a {
   float: left;
   width: 32px;
   height: 32px;
-  background: #ededed url("../images/geral/mark-small.png") no-repeat left top;
+  background: #ededed url("../images/mark-small.png") no-repeat left top;
   margin: 5px;
 }
 
@@ -704,7 +704,7 @@ section h2 a {
   height: 240px;
   border-radius: 5px;
   overflow: hidden;
-  background: #ededed url("../images/geral/mark-big.png") no-repeat center center;
+  background: #ededed url("../images/mark-big.png") no-repeat center center;
 }
 
 /* line 166, scss/style.scss */
@@ -743,7 +743,7 @@ section h2 a {
   width: 70px;
   height: 70px;
   border-radius: 5px;
-  background: #ededed url("../images/geral/mark-small.png") no-repeat center center;
+  background: #ededed url("../images/mark-small.png") no-repeat center center;
   margin: 0 15px 15px 0;
   position: relative;
 }
