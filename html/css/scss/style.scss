@@ -100,6 +100,7 @@ body {min-width:990px; font: normal 14px/21px "Trebuchet MS", Arial, sans-serif;
 /*******************************************
 				   Header
 *******************************************/
+
 .msg {float:left; width:100%; border-bottom: 2px solid #BCE8F1; position: fixed; top:0; left:0; background-color: #D9EDF7; color: #31708F; padding: 10px 0;z-index: 1; display:none;}
 .msg.sucess {background-color: #DFF0D8; border-color: #D6E9C6; color: #3C763D;}
 .msg.error {background-color: #F2DEDE; border-color: #EBCCD1; color: #A94442;}
@@ -127,19 +128,19 @@ h1 {float:left; width:100%; text-transform: uppercase; font: normal 65px/65px $f
 				   Main
 *******************************************/
 
-#explain {float:left; width:100%; background:#ededed; padding: 20px 0 30px 0;}
+section {float:left; width:100%;}
+section h2 {float:left; width:100%; margin: 30px 0 15px 0; color:#555; font: normal 36px/40px $fontFamily; text-transform: uppercase; }
+section h2 span {float:left; margin-right:20px;}
+section h2 a {text-transform: none; margin-top: 3px;}
+
+#explain {background:#ededed; padding: 20px 0 30px 0;}
 .pata {float:left; width:52px; height: 69px; position: absolute; top:-20px; right: 80px; @include geral-sprite('pata');}
 .container {float:left; width: 50%;}
-#explain h2 {float:left; width:100%; color:#555; font: normal 18px/27px $fontFamily; text-transform: uppercase; margin-bottom: 30px; }
-.gitmark-big {float:left; width: 120px; height: 120px; @include geral-sprite('mark-big'); }
+#explain h2 {font: normal 18px/27px $fontFamily; margin-bottom: 30px; }
+.gitmark-big {float:left; width: 120px; height: 120px; background: #ededed url('../images/geral/mark-big.png') no-repeat left top; }
 #explain .follow {float:left; width: 80px; height: 69px; @include geral-sprite('setas'); margin: 25px 20px;}
 .orgusers {float:left; width:180px;}
-.orgusers span {float:left; width: 32px; height: 32px; @include geral-sprite('mark-small'); margin: 5px;}
-
-#follow-everyone {float:left; width:100%;}
-#follow-everyone h2 {float:left; width:100%; margin: 30px 0 15px 0; color:#555; font: normal 36px/40px $fontFamily; text-transform: uppercase; }
-#follow-everyone h2 span {float:left; margin-right:20px;}
-#follow-everyone h2 a {text-transform: none; margin-top: 3px;}
+.orgusers span {float:left; width: 32px; height: 32px; background: #ededed url('../images/geral/mark-small.png') no-repeat left top; margin: 5px;}
 
 #friends {float:left; width:100%; list-style:none;}
 #friends li {float:left; width: 100px; height: 100px; margin: 10px 20px 10px 0; position: relative;}
@@ -154,3 +155,20 @@ h1 {float:left; width:100%; text-transform: uppercase; font: normal 65px/65px $f
 .tooltip-inner {max-width: 200px; padding: 3px 8px; color: #ffffff; text-align: center; text-decoration: none; background-color: #000000; border-radius: 4px;}
 .tooltip-arrow {position: absolute; width: 0; height: 0; border-color: transparent; border-style: solid;}
 .tooltip.bottom .tooltip-arrow {top: 0; left: 50%; margin-left: -5px; border-width: 0 5px 5px; border-bottom-color: #000000;}
+
+.title {float:left; width:100%; margin: 30px 0 15px 0;}
+.title h2 {width:auto; margin-top:0; margin-bottom: 0;}
+#orgSearch {float:left; width: 300px; height: 21px;padding: 6px 30px 6px 12px;font: normal 14px/21px $fontTrebuchet;color: #555;vertical-align: middle;background: #fff;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);}
+#orgSubmit {float: left; height: 20px; margin-left: -27px; margin-top: 7px; width: 20px;@include geral-sprite('lupa'); text-indent: -9999em;}
+
+.org {float:left; width:100%; margin-bottom: 20px;}
+.org-avatar {float:left; width: 240px; height: 240px; border-radius:5px; overflow:hidden; background: #ededed url('../images/geral/mark-big.png') no-repeat center center; }
+.members {float:left; margin-left: 20px; width: 700px;}
+.members h3 {float:left; width:100%; text-transform: uppercase; font: normal 24px/30px $fontTrebuchet; color:#555; margin-bottom: 15px;}
+.members h3 span {float:left; margin-right: 10px;}
+.members ul {float:left; width:100%; list-style:none;}
+.members li {float:left; width: 70px; height: 70px; border-radius: 5px; background: #ededed url('../images/geral/mark-small.png') no-repeat center center; margin: 0 15px 15px 0; position: relative; }
+.members li a {float:left; width: 70px; height: 70px;border-radius:5px; overflow:hidden; }
+.members li span {float:left; width: 16px; height: 16px; position: absolute; bottom: 7px; right: 7px; }
+.members li span.yes, .members li span.follow {@include geral-sprite('ok');}
+.members li span.no {@include geral-sprite('unfollow');}
