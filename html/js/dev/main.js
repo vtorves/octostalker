@@ -100,7 +100,7 @@
 							loading.hide();
 							msg.addClass('sucess').find('p').text('Congratz, you follow everyone now!');
 							msg.slideToggle();
-							$('#friends').find('span').addClass('yes').each(function(){
+							$('#friends').find('span').addClass('follow').each(function(){
 								var link = $(this).parent();
 								link.attr('data-original-title', 'Unfollow @'+link.attr('data-user'));
 							});
@@ -210,7 +210,7 @@
 							loading.hide();
 							msg.addClass('sucess').find('p').text('Congratz, you follow everyone now!');
 							msg.slideToggle();
-							t.parent().parent().find('.members span').addClass('yes').each(function(){
+							t.parent().parent().find('ul span').addClass('follow').each(function(){
 								var link = $(this).parent();
 								link.attr('data-original-title', 'Unfollow @'+link.attr('data-user'));
 							});
