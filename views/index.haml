@@ -1,40 +1,43 @@
 
-%section#main
-  .in
-    %h2 Octostalker
-    %h3 What can I do in here?
-    %p You can follow everyone that is following you.
-    %p You can follow everyone from your organization.
-    - if current_user
-      %img{src: current_user[:avatar]}
-    - else
-      %a.button-github.friends{:href => "/auth/github"} Signin
+%header#header
+  .inner
+    .container
+      %h1 OctoStalker
+      %p
+        You can follow everyone that is following you.
+        %br You can follow everyone from your organization.
+      .profile
+        - if current_user
+          %img{src: current_user[:avatar], width: 165, height: 165, alt: current_user[:username]}
+          %a.btn{:href => "/logout"} Logout
+        -else
+          %a.btn{:href => "/auth/github"} Signin with Github
 
-%section#friends
-  .in
-    %h2 Be nice, and follow back who follows you.
-    .alert.alert-success.hidden
-    .alert.alert-danger.hidden
-      %strong Holy guacamole!
-      An error has occurred
-    %a.button-github.friends Follow friends back
-    %span.waiting.hidden Waiting...
+%section#explain
+  .inner
+    .pata
+    .container
+      %h2 Be nice, and follow back who follows you
+      .gitmark-big
+      .follow
+      .gitmark-big
+    .container
+      %h2 Follow everyone from your organization
+      .gitmark-big
+      .follow
+      .orgusers
+        %span
+        %span
+        %span
+        %span
+        %span
+        %span
+        %span
+        %span
+        %span
+        %span
+        %span
+        %span
 
-- if @organizations
-  %section#organizations
-    .in
-      %h1 Organizations
-      %input{type:"text", placeholder: "e.g. rails"}
-      .alert.alert-success.hidden
-      .alert.alert-danger.hidden
-        %strong Holy guacamole!
-        An error has occurred
-      %span.waiting.hidden Waiting...
-      .orgs
-        - @organizations.each do |org|
-          %a.button-github{data: {organization: org.login}}
-            %img{src: "#{org.rels[:avatar].href}&s=440", width: 220, height: 220}
-%section#me
-  .in
-    %h5 Follow me
-    %a{href: 'http://twitter.com/arthurnn'} @arthurnn
+- if current_user
+  %section#follow-everyone
