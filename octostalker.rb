@@ -113,6 +113,7 @@ class OctostalkerApplication < Sinatra::Base
       avatar: user.rels[:avatar].href,
       follows: false,
       login: user.login,
+      url: "http://www.github.com/#{user.login}",
     }
   end
 
