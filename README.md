@@ -21,5 +21,8 @@ bundle install
 foreman start
 ```
 
+## Credits
+
+@luanmuniz - For the design and frontend help
 
 
