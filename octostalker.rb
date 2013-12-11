@@ -52,7 +52,14 @@ class OctostalkerApplication < Sinatra::Base
       end
       @organizations = client.organizations
       @friends = client.followers(client.login, per_page: 16, auto_paginate: false)
-
+      @friends.map! do |user|
+        {
+          avatar: user.rels[:avatar].href,
+          follows: false,
+#          follows: client.follows?(user.login),
+          login: user.login,
+        }
+      end
       haml :logged, layout: :'layouts/application'
     else
       haml :index, layout: :'layouts/application'

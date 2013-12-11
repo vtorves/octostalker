@@ -6,6 +6,6 @@
     %ul#friends
       - @friends.each do |user|
         %li
-          %a{data: {toogle: 'tooltip', user: user.login}}
-            %img{src: user.rels[:avatar].href, with: 100, height: 100 }
-              %span.follow
+          %a{data: {toogle: 'tooltip', user: user[:login]}}
+            %img{src: user[:avatar], with: 100, height: 100 }
+              %span{class: ("follow" if user[:follows])}
