@@ -86,7 +86,7 @@ class Scripts
                     success: (data)->
                         loading.hide()
                         $(data).insertAfter("#follow-everyone .inner .title")
-                        @followAllInOrgs()
+                        classe.followAllInOrgs()
 					fail: (xhr, status, error) ->
 						data = eval("(" + xhr.responseText + ")");
 						loading.hide()
