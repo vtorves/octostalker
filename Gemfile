@@ -13,9 +13,11 @@ gem 'compass'
 gem 'bootstrap-sass'
 gem 'coffee-script'
 
+gem 'activesupport'
 gem 'uglifier'
 gem 'octokit', '~> 2.6.3'
 gem 'omniauth-github'
+gem 'rack-google-analytics'
 
 gem 'foreman'
 gem 'thin'
