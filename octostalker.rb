@@ -51,6 +51,14 @@ class OctostalkerApplication < Sinatra::Base
         org.rels[:avatar].href
       end
       @organizations = client.organizations
+      @organizations.map! do |org|
+        avatar = org.rels[:avatar].href
+        avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
+        {
+          avatar: avatar,
+          login: org.login,
+        }
+      end
       @friends = client.followers(client.login, per_page: 16, auto_paginate: false)
       @friends.map! do |user|
         {
