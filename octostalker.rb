@@ -77,6 +77,11 @@ class OctostalkerApplication < Sinatra::Base
     end
   end
 
+  get '/logout' do
+    session.clear
+    redirect to('/')
+  end
+
   get '/auth/github/callback' do
     session[:auth] ||= {}
     auth = env['omniauth.auth']
