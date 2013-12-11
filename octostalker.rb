@@ -11,7 +11,6 @@ class OctostalkerApplication < Sinatra::Base
   set :assets_path,   File.join(root, assets_prefix)
 
   configure do
-    # Setup Sprockets
     %w{javascripts stylesheets images font}.each do |type|
       assets.append_path "assets/#{type}"
     end
@@ -23,7 +22,6 @@ class OctostalkerApplication < Sinatra::Base
       compass.relative_assets = true
     end
 
-    # Configure Sprockets::Helpers (if necessary)
     Sprockets::Helpers.configure do |config|
       config.environment = assets
       config.prefix      = assets_prefix
@@ -54,7 +52,6 @@ class OctostalkerApplication < Sinatra::Base
       @organizations.map! do |org|
         avatar = org.rels[:avatar].href
         avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
-#        members = client.organization_members(org.login, per_page: 16, auto_paginate: false)
         {
           avatar: avatar,
           login: org.login,
@@ -66,7 +63,6 @@ class OctostalkerApplication < Sinatra::Base
         {
           avatar: user.rels[:avatar].href,
           follows: false,
-#          follows: client.follows?(user.login),
           login: user.login,
         }
       end
