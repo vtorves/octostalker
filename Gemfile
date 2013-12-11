@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
 gem 'rack-cache'
-gem 'sinatra', :require => 'sinatra/base'
+gem 'sinatra', require: 'sinatra/base'
+gem 'sinatra-partial', require: 'sinatra/partial'
 gem 'haml'
 
 gem 'sprockets'
