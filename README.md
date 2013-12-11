@@ -29,3 +29,7 @@ open [http://localhost:4567](http://localhost:4567)
 @jsncostello - For the octocat
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arthurnn/octostalker/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
