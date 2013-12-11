@@ -27,6 +27,7 @@
               %span Members of #{org[:login]}
               %a.btn.followorg{data: {org:'foo'}} Follow everyone in #{org[:login]}
               %ul
-                %li
-                  %a{data: {toogle: 'tooltip', user: 'foo'}}
-                    %img{src: "http://placehold.it/70x70", with: 70, height: 70 }
+                - org[:members].each do |user|
+                  %li
+                    %a{data: {toogle: 'tooltip', user: 'foo'}}
+                      %img{src: "http://placehold.it/70x70", with: 70, height: 70 }

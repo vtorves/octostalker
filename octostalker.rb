@@ -54,9 +54,12 @@ class OctostalkerApplication < Sinatra::Base
       @organizations.map! do |org|
         avatar = org.rels[:avatar].href
         avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
+#        members = client.organization_members(org.login, per_page: 16, auto_paginate: false)
+
         {
           avatar: avatar,
           login: org.login,
+          members: []
         }
       end
       @friends = client.followers(client.login, per_page: 16, auto_paginate: false)
@@ -79,7 +82,10 @@ class OctostalkerApplication < Sinatra::Base
     auth = env['omniauth.auth']
     session[:auth][:uid] = auth['uid']
     session[:auth][:token] = auth['credentials']['token']
-    session[:auth][:avatar] = auth[:extra][:raw_info][:avatar_url]
+
+    avatar = auth[:extra][:raw_info][:avatar_url]
+    avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
+    session[:auth][:avatar] = avatar
     redirect to('/')
   end
 
