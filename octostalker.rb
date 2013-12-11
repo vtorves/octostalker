@@ -51,9 +51,12 @@ class OctostalkerApplication < Sinatra::Base
         org.rels[:avatar].href
       end
       @organizations = client.organizations
-    end
+      @friends = client.followers(client.login, per_page: 16, auto_paginate: false)
 
-    haml :index, layout: :'layouts/application'
+      haml :logged, layout: :'layouts/application'
+    else
+      haml :index, layout: :'layouts/application'
+    end
   end
 
   get '/auth/github/callback' do

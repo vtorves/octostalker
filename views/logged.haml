@@ -1,0 +1,11 @@
+%section#follow-everyone
+  .inner
+    %h2
+      %span Friends
+      %a.btn#followAllFriends Follow all friends back
+    %ul#friends
+      - @friends.each do |user|
+        %li
+          %a{data: {toogle: 'tooltip', user: 'foo'}}
+            %img{src: user.rels[:avatar].href, with: 100, height: 100 }
+              %span.follow
