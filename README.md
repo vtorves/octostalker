@@ -18,8 +18,10 @@ GITHUB_SECRET=<Client Secret>
 Run:
 ```bash
 bundle install
-foreman start
+foreman start -p 4567
 ```
+
+open [http://localhost:4567](http://localhost:4567)
 
 ## Credits
 
