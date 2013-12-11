@@ -89,6 +89,7 @@ body {min-width:990px; font: normal 14px/21px "Trebuchet MS", Arial, sans-serif;
 
 #forkit {float:left; position: fixed; right:0; top:0; width: 149px; height: 149px; @include geral-sprite('forkit'); text-indent: -9999em; z-index:2;}
 .btn {
+    cursor: pointer;
     float:left;
     padding: 4px 25px;
     border: 1px solid #bebebe;
