@@ -25,7 +25,7 @@
           .members
             %h3
               %span Members of #{org[:login]}
-              %a.btn.followorg{data: {org:'foo'}} Follow everyone in #{org[:login]}
+              %a.btn.followorg{data: {org: org[:login]}} Follow everyone in #{org[:login]}
               %ul
                 - org[:members].each do |user|
                   %li
