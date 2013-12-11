@@ -75,6 +75,10 @@ class OctostalkerApplication < Sinatra::Base
     redirect to('/')
   end
 
+  get '/auth/failure' do
+    redirect '/'
+  end
+
   post '/friends.do' do
     content_type :json
     client or (return 403)
