@@ -3,7 +3,7 @@ class Scripts
 	constructor: ->
 		@followAllFriends()
 		@followAllInOrgs()
-#		@searchOrgFollow()
+		@searchOrgFollow()
 
 	followAllFriends: ->
 		$("#followAllFriends").on "click", (e) ->
@@ -61,8 +61,6 @@ class Scripts
 						setTimeout (->
 							msg.slideToggle()
 						), 6000
-						return
-
 					fail: (xhr, status, error) ->
 						data = eval("(" + xhr.responseText + ")");
 						loading.hide()
@@ -83,19 +81,12 @@ class Scripts
 			if input.val() isnt "" and not loading.is(":visible")
 				loading.slideToggle()
 				$.ajax
-					url: "/friends.do"
-					type: "POST"
-					data:
-						org: input.val()
-
-					success: (data) ->
-						loading.hide()
-						msg.addClass("sucess").find("p").text "Just followed "+data.followed+" users from "+input.val()
-						msg.slideToggle()
-						setTimeout (->
-							msg.slideToggle()
-						), 6000
-
+                    url: "/organization/#{input.val()}"
+                    type: "GET"
+                    success: (data)->
+                        loading.hide()
+                        $(data).insertAfter("#follow-everyone .inner .title")
+                        @followAllInOrgs()
 					fail: (xhr, status, error) ->
 						data = eval("(" + xhr.responseText + ")");
 						loading.hide()

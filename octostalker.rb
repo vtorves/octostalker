@@ -9,6 +9,9 @@ class OctostalkerApplication < Sinatra::Base
   set :assets_prefix, '/assets'
   set :digest_assets, false
   set :assets_path,   File.join(root, assets_prefix)
+  set :partial_template_engine, :haml
+  set :haml, { :format => :html5 }
+  enable :sessions, :logging
 
   configure do
     %w{javascripts stylesheets images font}.each do |type|
@@ -30,10 +33,6 @@ class OctostalkerApplication < Sinatra::Base
       config.debug       = true
     end
 
-    set :haml, { :format => :html5 }
-
-    enable :sessions, :logging
-
     use OmniAuth::Builder do
       provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user:follow"
     end
@@ -49,23 +48,10 @@ class OctostalkerApplication < Sinatra::Base
         org.rels[:avatar].href
       end
       @organizations = client.organizations
-      @organizations.map! do |org|
-        avatar = org.rels[:avatar].href
-        avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
-        {
-          avatar: avatar,
-          login: org.login,
-          members: []
-        }
-      end
+      @organizations.map! { |o| organization_hash(o) }
+
       @friends = client.followers(client.login, per_page: 16, auto_paginate: false)
-      @friends.map! do |user|
-        {
-          avatar: user.rels[:avatar].href,
-          follows: false,
-          login: user.login,
-        }
-      end
+      @friends.map!{ |u| user_hash(u) }
       haml :logged, layout: :'layouts/application'
     else
       haml :index, layout: :'layouts/application'
@@ -93,6 +79,40 @@ class OctostalkerApplication < Sinatra::Base
     client or (return 403)
     follow_users client.followers
     {success: true}.to_json
+  end
+
+  get '/organization/:org' do
+    client or (return 403)
+    org = params[:org]
+    org = client.org(org)
+    partial :organization, locals: {
+      organization: organization_hash(org, true)
+    }
+  end
+
+  def organization_hash(org, load_members = false)
+    avatar = org.rels[:avatar].href
+    avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
+    members = []
+
+    if load_members
+      members = client.organization_members(org.login, per_page: 16, auto_paginate: false)[0..15]
+      members.map!{ |u| user_hash(u) }
+    end
+
+    { avatar: avatar,
+      login: org.login,
+      members: members
+    }
+  end
+
+
+  def user_hash(user)
+    {
+      avatar: user.rels[:avatar].href,
+      follows: false,
+      login: user.login,
+    }
   end
 
   post '/organization.do' do
@@ -128,6 +148,7 @@ class OctostalkerApplication < Sinatra::Base
     end
   end
 
+  register Sinatra::Partial
   helpers do
     include Sprockets::Helpers
 
