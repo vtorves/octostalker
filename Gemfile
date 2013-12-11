@@ -20,4 +20,4 @@ gem 'omniauth-github'
 gem 'rack-google-analytics'
 
 gem 'foreman'
-gem 'thin'
+gem 'puma'

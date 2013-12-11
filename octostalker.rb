@@ -11,6 +11,7 @@ class OctostalkerApplication < Sinatra::Base
   set :assets_path,   File.join(root, assets_prefix)
   set :partial_template_engine, :haml
   set :haml, { :format => :html5 }
+  set :server, :puma
   enable :sessions, :logging
 
   configure do
