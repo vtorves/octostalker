@@ -18,16 +18,4 @@
     #searchOrg.org
     %h2
       %span Your organizations
-      - @organizations.each do |org|
-        .org
-          .org-avatar
-            %img{src: org[:avatar], width: 240, height: 240}
-          .members
-            %h3
-              %span Members of #{org[:login]}
-              %a.btn.followorg{data: {org: org[:login]}} Follow everyone in #{org[:login]}
-              %ul
-                - org[:members].each do |user|
-                  %li
-                    %a{data: {toogle: 'tooltip', user: 'foo'}}
-                      %img{src: "http://placehold.it/70x70", with: 70, height: 70 }
+      = partial :organization, collection: @organizations
