@@ -23,6 +23,6 @@ foreman start
 
 ## Credits
 
-@luanmuniz - For the design and frontend help
-
+@luanmuniz - For the frontend help
+@jsncostello - For the octocat
 
