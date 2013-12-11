@@ -55,7 +55,6 @@ class OctostalkerApplication < Sinatra::Base
         avatar = org.rels[:avatar].href
         avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
 #        members = client.organization_members(org.login, per_page: 16, auto_paginate: false)
-
         {
           avatar: avatar,
           login: org.login,
@@ -87,7 +86,6 @@ class OctostalkerApplication < Sinatra::Base
     auth = env['omniauth.auth']
     session[:auth][:uid] = auth['uid']
     session[:auth][:token] = auth['credentials']['token']
-
     avatar = auth[:extra][:raw_info][:avatar_url]
     avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
     session[:auth][:avatar] = avatar
@@ -97,8 +95,8 @@ class OctostalkerApplication < Sinatra::Base
   post '/friends.do' do
     content_type :json
     client or (return 403)
-    counter = follow_users client.followers
-    {followed: counter}.to_json
+    follow_users client.followers
+    {success: true}.to_json
   end
 
   post '/organization.do' do
@@ -107,12 +105,12 @@ class OctostalkerApplication < Sinatra::Base
 
     begin
       org = params[:org]
-      counter = follow_users client.organization_members(org)
+      follow_users client.organization_members(org)
     rescue Octokit::NotFound
       status 404
       return {message: 'Organization not found'}.to_json
     end
-    {followed: counter}.to_json
+    {success: true}.to_json
   end
 
   post '/me.do' do
@@ -127,15 +125,11 @@ class OctostalkerApplication < Sinatra::Base
   end
 
   def follow_users(users)
-    counter = 0
     users.each do |member|
       login = member.login
       next if login == client.login
-      if !client.follows?(login) && client.follow(login)
-        counter += 1
-      end
+      client.follow(login)
     end
-    counter
   end
 
   helpers do
