@@ -8,5 +8,5 @@
       %ul
         - organization[:members].each do |user|
           %li
-            %a{data: {toogle: 'tooltip', user: user[:login]}}
+            %a{href: user[:url], target: '_blank', data: {toogle: 'tooltip', user: user[:login]}}
               %img{src: user[:avatar], with: 70, height: 70 }
