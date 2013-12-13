@@ -91,17 +91,17 @@ class OctostalkerApplication < Sinatra::Base
     org = params[:org]
     org = client.org(org)
     partial :organization, locals: {
-      organization: organization_hash(org, true)
+      organization: organization_hash(org)
     }
   end
 
-  def organization_hash(org, load_members = false)
+  def organization_hash(org, load_members = true)
     avatar = org.rels[:avatar].href
     avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
     members = []
 
     if load_members
-      members = client.organization_members(org.login, per_page: 16, auto_paginate: false)[0..15]
+      members = client.organization_members(org.login, per_page: 16, auto_paginate: false)
       members.map!{ |u| user_hash(u) }
     end
 
