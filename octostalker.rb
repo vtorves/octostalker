@@ -89,7 +89,12 @@ class OctostalkerApplication < Sinatra::Base
   get '/organization/:org' do
     client or (return 403)
     org = params[:org]
-    org = client.org(org)
+    begin
+      org = client.org(org)
+    rescue Octokit::NotFound
+      status 404
+      return
+    end
     partial :organization, locals: {
       organization: organization_hash(org)
     }
