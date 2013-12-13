@@ -168,7 +168,7 @@ section h2 a {text-transform: none; margin-top: 3px;}
 #orgSubmit {float: left; height: 20px; margin-left: -27px; margin-top: 7px; width: 20px;@include geral-sprite('lupa'); text-indent: -9999em;}
 
 .org {float:left; width:100%; margin-bottom: 20px;}
-.org-avatar {float:left; width: 240px; height: 240px; border-radius:5px; overflow:hidden; background: #ededed url('mark-big.png') no-repeat center center; }
+.org-avatar {float:left; width: 240px; height: 240px; border-radius:5px; overflow:hidden; background: #ededed no-repeat center center; }
 .members {float:left; margin-left: 20px; width: 700px;}
 .members h3 {float:left; width:100%; text-transform: uppercase; font: normal 24px/30px $fontTrebuchet; color:#555; margin-bottom: 15px;}
 .members h3 span {float:left; margin-right: 10px;}
