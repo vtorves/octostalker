@@ -4,6 +4,8 @@
   .members
     %h3
       %span Members of #{organization[:login]}
+      - if organization[:size]
+        %span.size (total of #{organization[:size]} members)
       %a.btn.followorg{data: {org: organization[:login]}} Follow everyone in #{organization[:login]}
       %ul
         - organization[:members].each do |user|

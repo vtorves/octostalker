@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require
+require './octokit_ext'
 
 class OctostalkerApplication < Sinatra::Base
   set :root,          File.dirname(__FILE__)
@@ -105,16 +106,18 @@ class OctostalkerApplication < Sinatra::Base
   def organization_hash(org, load_members = true)
     avatar = org.rels[:avatar].href
     avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
-    members = []
+    size, members = nil, []
 
     if load_members
       members = client.organization_members(org.login, per_page: 16, auto_paginate: false)
       members.map!{ |u| user_hash(u) }
+      size = client.organization_members_size(org.login)
     end
 
     { avatar: avatar,
       login: org.login,
-      members: members
+      members: members,
+      size: size
     }
   end
 
