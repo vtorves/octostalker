@@ -12,9 +12,9 @@
 
   %body
     %a{:href => "https://github.com/arthurnn/octostalker", :id => "forkit", target: "_blank"} Fork it!
-    %div.msg#msg
+    %div.msg#msg{style: ('display: block;' if flash[:notice]), class: ("error" if flash[:notice]) }
       %div.inner
-        %p
+        %p= flash[:notice]
     %div.msg.loading
       %div.inner
         %p

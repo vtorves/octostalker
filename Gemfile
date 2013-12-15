@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'octokit', '~> 2.6.3'
 gem 'omniauth-github'
 gem 'rack-google-analytics'
+gem 'rack-flash3', require: 'rack-flash'
 
 gem 'foreman'
 gem 'puma'

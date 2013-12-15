@@ -13,6 +13,7 @@ class OctostalkerApplication < Sinatra::Base
   set :haml, { :format => :html5 }
   set :server, :puma
   enable :sessions, :logging
+  use Rack::Flash
 
   configure do
     %w{javascripts stylesheets images font}.each do |type|
@@ -76,6 +77,7 @@ class OctostalkerApplication < Sinatra::Base
   end
 
   get '/auth/failure' do
+    flash[:notice] = params[:message]
     redirect '/'
   end
 
