@@ -6,9 +6,12 @@ An app to follow friends and organizations on github
 
 ## How to run locally
 
-Create a new github app. [here](https://github.com/settings/applications/new)
+Create a new [GitHub application](https://github.com/settings/applications/new) for test, you should use those urls:
 
-Create a `.env` file on the root of the project:
+- URL: `http://localhost:4567`
+- Callback URL: `http://localhost:4567/users/auth/github/callback`
+
+Create a `.env` file on the root of the project using the credentials from the app:
 
 ```
 GITHUB_KEY=<Client ID>
