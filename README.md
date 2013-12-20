@@ -9,7 +9,7 @@ An app to follow friends and organizations on github
 Create a new [GitHub application](https://github.com/settings/applications/new) for test, you should use those urls:
 
 - URL: `http://localhost:4567`
-- Callback URL: `http://localhost:4567/users/auth/github/callback`
+- Callback URL: `http://localhost:4567/auth/github/callback`
 
 Create a `.env` file on the root of the project using the credentials from the app:
 
