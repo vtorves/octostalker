@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby '2.1.0'
+
 gem 'rack-cache'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-partial', require: 'sinatra/partial'
