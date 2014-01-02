@@ -7,9 +7,9 @@
 
 @import 'compass';
 
-$geral-spacing:1px;
-$geral-layout:smart;
-@import "geral/*.png";
+$icons-spacing:1px;
+$icons-layout:smart;
+@import "icons/*.png";
 
 $fontFamily: Collegia, "Trebuchet MS", Arial, sans-serif;
 $fontTrebuchet: "Trebuchet MS", Arial, sans-serif;
@@ -87,7 +87,7 @@ body {min-width:990px; font: normal 14px/21px "Trebuchet MS", Arial, sans-serif;
 #content {height: 100%; padding-bottom: 65px;}
 .clear {clear: both;}
 
-#forkit {float:left; position: fixed; right:0; top:0; width: 149px; height: 149px; @include geral-sprite('forkit'); text-indent: -9999em; z-index:2;}
+#forkit {float:left; position: fixed; right:0; top:0; width: 149px; height: 149px; @include icons-sprite('forkit'); text-indent: -9999em; z-index:2;}
 .btn {
     cursor: pointer;
     float:left;
@@ -140,11 +140,11 @@ section h2 span {float:left; margin-right:20px;}
 section h2 a {text-transform: none; margin-top: 3px;}
 
 #explain {background:#ededed; padding: 20px 0 30px 0;}
-.pata {float:left; width:52px; height: 69px; position: absolute; top:-20px; right: 80px; @include geral-sprite('pata');}
+.pata {float:left; width:52px; height: 69px; position: absolute; top:-20px; right: 80px; @include icons-sprite('pata');}
 .container {float:left; width: 50%;}
 #explain h2 {font: normal 18px/27px $fontFamily; margin-bottom: 30px; }
 .gitmark-big {float:left; width: 120px; height: 120px; background: #ededed url('mark-big.png') no-repeat left top; }
-#explain .follow {float:left; width: 80px; height: 69px; @include geral-sprite('setas'); margin: 25px 20px;}
+#explain .follow {float:left; width: 80px; height: 69px; @include icons-sprite('setas'); margin: 25px 20px;}
 .orgusers {float:left; width:180px;}
 .orgusers span {float:left; width: 32px; height: 32px; background: #ededed url('mark-small.png') no-repeat left top; margin: 5px;}
 
@@ -152,8 +152,8 @@ section h2 a {text-transform: none; margin-top: 3px;}
 #friends li {float:left; width: 100px; height: 100px; margin: 10px 20px 10px 0; position: relative;}
 #friends a {float:left; width: 100px; height: 100px;border-radius:5px; overflow:hidden; }
 #friends span {float:left; width: 16px; height: 16px; position: absolute; bottom: 7px; right: 7px; }
-#friends span.yes, #friends span.follow {@include geral-sprite('ok');}
-#friends span.no {@include geral-sprite('unfollow');}
+#friends span.yes, #friends span.follow {@include icons-sprite('ok');}
+#friends span.no {@include icons-sprite('unfollow');}
 
 .tooltip {position: absolute; z-index: 1030; display: block; visibility: visible; font-size: 12px; line-height: 1.4; opacity: 0; filter: alpha(opacity=0);}
 .tooltip.in {opacity: 0.9; filter: alpha(opacity=90);}
@@ -165,7 +165,7 @@ section h2 a {text-transform: none; margin-top: 3px;}
 .title {float:left; width:100%; margin: 30px 0 15px 0;}
 .title h2 {width:auto; margin-top:0; margin-bottom: 0;}
 #orgSearch {float:left; width: 300px; height: 21px;padding: 6px 30px 6px 12px;font: normal 14px/21px $fontTrebuchet;color: #555;vertical-align: middle;background: #fff;border: 1px solid #ccc;border-radius: 4px;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);}
-#orgSubmit {float: left; height: 20px; margin-left: -27px; margin-top: 7px; width: 20px;@include geral-sprite('lupa'); text-indent: -9999em;}
+#orgSubmit {float: left; height: 20px; margin-left: -27px; margin-top: 7px; width: 20px;@include icons-sprite('lupa'); text-indent: -9999em;}
 
 .org {float:left; width:100%; margin-bottom: 20px;}
 .org-avatar {float:left; width: 240px; height: 240px; border-radius:5px; overflow:hidden; background: #ededed no-repeat center center; }
@@ -177,5 +177,5 @@ section h2 a {text-transform: none; margin-top: 3px;}
 .members li {float:left; width: 70px; height: 70px; border-radius: 5px; background: #ededed url('mark-small.png') no-repeat center center; margin: 0 15px 15px 0; position: relative; }
 .members li a {float:left; width: 70px; height: 70px;border-radius:5px; overflow:hidden; }
 .members li span {float:left; width: 16px; height: 16px; position: absolute; bottom: 7px; right: 7px; }
-.members li span.yes, .members li span.follow {@include geral-sprite('ok');}
-.members li span.no {@include geral-sprite('unfollow');}
+.members li span.yes, .members li span.follow {@include icons-sprite('ok');}
+.members li span.no {@include icons-sprite('unfollow');}
