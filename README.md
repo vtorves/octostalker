@@ -28,7 +28,7 @@ open [http://localhost:4567](http://localhost:4567)
 
 ## Credits
 
-@luanmuniz - For the frontend help  
+[@luanmuniz](https://github.com/luanmuniz) - For the frontend help  
 @jsncostello - For the octocat
 
 
