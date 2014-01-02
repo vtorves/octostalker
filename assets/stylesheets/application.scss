@@ -101,6 +101,17 @@ body {min-width:990px; font: normal 14px/21px "Trebuchet MS", Arial, sans-serif;
     text-decoration: none;
     text-shadow: 0 1px 0 #fff;
     font: bold 14px/21px "Trebuchet MS", Arial, sans-serif;
+
+    &:hover {
+        background-color: #ccc;
+        @include background-image(linear-gradient(top, #eee 0%, #ddd 100%));
+    }
+
+    &:active {
+        background-color: #dcdcdc;
+        background-image: none;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15);
+    }
 }
 
 /*******************************************
