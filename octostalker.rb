@@ -17,8 +17,10 @@ class OctostalkerApplication < Sinatra::Base
   register Sinatra::Partial
 
   # Use the Dalli Rack session implementation
-  use Rack::Session::Dalli,
-  cache: Dalli::Client.new(nil, :compression => true, :namespace => 'rack.session', :expires_in => 3600)
+  use Rack::Session::Dalli, cache: Dalli::Client.new(nil,
+    compress: true,
+    namespace: 'rack.session',
+    expires_in: 3600)
   use Rack::Flash
 
   configure(:test) { disable :logging }
