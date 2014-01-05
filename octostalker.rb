@@ -15,6 +15,7 @@ class OctostalkerApplication < Sinatra::Base
   set :server, :puma
   enable :sessions, :logging
   use Rack::Flash
+  register Sinatra::Partial
 
   configure do
     %w{javascripts stylesheets images font}.each do |type|
@@ -103,34 +104,6 @@ class OctostalkerApplication < Sinatra::Base
     }
   end
 
-  def organization_hash(org, load_members = true)
-    avatar = org.rels[:avatar].href
-    avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
-    size, members = nil, []
-
-    if load_members
-      members = client.organization_members(org.login, per_page: 16, auto_paginate: false)
-      members.map!{ |u| user_hash(u) }
-      size = client.organization_members_size(org.login)
-    end
-
-    { avatar: avatar,
-      login: org.login,
-      members: members,
-      size: size
-    }
-  end
-
-
-  def user_hash(user)
-    {
-      avatar: user.rels[:avatar].href,
-      follows: false,
-      login: user.login,
-      url: "http://www.github.com/#{user.login}",
-    }
-  end
-
   post '/organization.do' do
     content_type :json
     client or (return 403)
@@ -151,6 +124,43 @@ class OctostalkerApplication < Sinatra::Base
     {success: client.follow('arthurnn')}.to_json
   end
 
+  helpers do
+    include Sprockets::Helpers
+
+    def current_user
+      session[:auth]
+    end
+  end
+
+  private
+
+  def organization_hash(org, load_members = true)
+    avatar = org.rels[:avatar].href
+    avatar = avatar + "&s=400" if avatar =~ /.gravatar.com/
+    size, members = nil, []
+
+    if load_members
+      members = client.organization_members(org.login, per_page: 16, auto_paginate: false)
+      members.map!{ |u| user_hash(u) }
+      size = client.organization_members_size(org.login)
+    end
+
+    { avatar: avatar,
+      login: org.login,
+      members: members,
+      size: size
+    }
+  end
+
+  def user_hash(user)
+    {
+      avatar: user.rels[:avatar].href,
+      follows: false,
+      login: user.login,
+      url: "http://www.github.com/#{user.login}",
+    }
+  end
+
   def client
     return nil unless session[:auth]
     @client ||= Octokit::Client.new(access_token: session[:auth][:token])
@@ -161,15 +171,6 @@ class OctostalkerApplication < Sinatra::Base
       login = member.login
       next if login == client.login
       client.follow(login)
-    end
-  end
-
-  register Sinatra::Partial
-  helpers do
-    include Sprockets::Helpers
-
-    def current_user
-      session[:auth]
     end
   end
 end
