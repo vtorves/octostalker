@@ -14,6 +14,8 @@ class OctostalkerApplication < Sinatra::Base
   set :haml, { :format => :html5 }
   set :server, :puma
   enable :sessions, :logging
+  configure(:test) { disable :logging }
+
   use Rack::Flash
   register Sinatra::Partial
 
