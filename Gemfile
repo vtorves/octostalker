@@ -24,3 +24,9 @@ gem 'rack-flash3', require: 'rack-flash'
 
 gem 'foreman'
 gem 'puma'
+
+group :test do
+  gem 'rspec', '~> 3.0.0.beta1'
+  gem 'poltergeist'
+  gem 'webmock'
+end
