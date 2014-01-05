@@ -27,6 +27,10 @@ foreman start -p 4567
 
 open [http://localhost:4567](http://localhost:4567)
 
+## Screenshots
+
+![octostalker_640](https://f.cloud.github.com/assets/833383/1847298/cda51bb0-7642-11e3-9edc-b335f98785ef.gif)
+
 ## Credits
 
 [@luanmuniz](https://github.com/luanmuniz) - For the frontend help  
