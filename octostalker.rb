@@ -13,11 +13,15 @@ class OctostalkerApplication < Sinatra::Base
   set :partial_template_engine, :haml
   set :haml, { format: :html5 }
   set :server, :puma
-  enable :sessions, :logging
-  configure(:test) { disable :logging }
-
-  use Rack::Flash
+  enable :logging
   register Sinatra::Partial
+
+  # Use the Dalli Rack session implementation
+  use Rack::Session::Dalli,
+  cache: Dalli::Client.new(nil, :compression => true, :namespace => 'rack.session', :expires_in => 3600)
+  use Rack::Flash
+
+  configure(:test) { disable :logging }
 
   configure do
     %w{javascripts stylesheets images font}.each do |type|
@@ -124,6 +128,11 @@ class OctostalkerApplication < Sinatra::Base
     content_type :json
     client or (return 403)
     {success: client.follow('arthurnn')}.to_json
+  end
+
+  error Octokit::Unauthorized do
+    session.clear
+    redirect to('/')
   end
 
   helpers do
