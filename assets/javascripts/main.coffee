@@ -95,6 +95,13 @@ class Scripts
 						setTimeout (->
 							msg.slideToggle()
 						), 6000
+					error: ->
+						loading.hide()
+						msg.addClass("error").find("p").text "Organization not found, try again!"
+						msg.slideToggle()
+						setTimeout (->
+							msg.slideToggle()
+						), 6000
 
 			e.preventDefault()
 
