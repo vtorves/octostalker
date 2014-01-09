@@ -81,12 +81,12 @@ class Scripts
 			if input.val() isnt "" and not loading.is(":visible")
 				loading.slideToggle()
 				$.ajax
-                    url: "/organization/#{input.val()}"
-                    type: "GET"
-                    success: (data)->
-                        loading.hide()
-                        $(data).insertAfter("#follow-everyone .inner .title")
-                        classe.followAllInOrgs()
+					url: "/organization/#{input.val()}"
+					type: "GET"
+					success: (data)->
+						loading.hide()
+						$(data).insertAfter("#follow-everyone .inner .title")
+						classe.followAllInOrgs()
 					fail: (xhr, status, error) ->
 						data = eval("(" + xhr.responseText + ")");
 						loading.hide()
