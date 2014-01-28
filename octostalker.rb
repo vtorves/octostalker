@@ -19,7 +19,7 @@ class OctostalkerApplication < Sinatra::Base
   # Use the Dalli Rack session implementation
   use Rack::Session::Dalli, cache: Dalli::Client.new(nil,
     compress: true,
-    namespace: 'rack.session',
+    namespace: 'octostalker/rack.session',
     expires_in: 3600)
   use Rack::Flash
 
