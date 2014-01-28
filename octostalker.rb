@@ -99,6 +99,8 @@ class OctostalkerApplication < Sinatra::Base
 
   get '/organization/:org' do
     client or (return 403)
+
+    cache_control :public, :max_age => 36000
     org = params[:org]
     begin
       org = client.org(org)
