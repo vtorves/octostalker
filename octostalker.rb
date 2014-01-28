@@ -4,12 +4,12 @@ Bundler.require
 require './octokit_ext'
 
 class OctostalkerApplication < Sinatra::Base
-  set :root,          File.dirname(__FILE__)
-  set :assets,        Sprockets::Environment.new(root)
-  set :precompile,    [ /\w+\.(?!js|scss).+/, /application.(css|js)$/ ]
+  set :root, File.dirname(__FILE__)
+  set :assets, Sprockets::Environment.new(root)
+  set :precompile, [ /\w+\.(?!js|scss).+/, /application.(css|js)$/ ]
   set :assets_prefix, '/assets'
-  set :digest_assets, false
-  set :assets_path,   File.join(root, assets_prefix)
+  set :assets_path, File.join(root, assets_prefix)
+
   set :partial_template_engine, :haml
   set :haml, { format: :html5 }
   set :server, :puma
@@ -40,9 +40,8 @@ class OctostalkerApplication < Sinatra::Base
     Sprockets::Helpers.configure do |config|
       config.environment = assets
       config.prefix      = assets_prefix
-      config.digest      = digest_assets
+      config.digest      = true
       config.public_path = public_folder
-      config.debug       = true
     end
 
     use OmniAuth::Builder do
