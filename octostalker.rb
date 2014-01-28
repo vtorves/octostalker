@@ -55,11 +55,13 @@ class OctostalkerApplication < Sinatra::Base
 
   get '/' do
     if client
-      client.organizations.each do |org|
-        org.rels[:avatar].href
+      @organizations = cache.fetch("index/#{current_user[:uid]}/organizations", 36000) do
+        client.organizations.each do |org|
+          org.rels[:avatar].href
+        end
+        orgs = client.organizations
+        orgs.map { |o| organization_hash(o) }
       end
-      @organizations = client.organizations
-      @organizations.map! { |o| organization_hash(o) }
 
       @friends = client.followers(client.login, per_page: 16, auto_paginate: false)
       @friends.map!{ |u| user_hash(u) }
@@ -180,5 +182,9 @@ class OctostalkerApplication < Sinatra::Base
       next if login == client.login
       client.follow(login)
     end
+  end
+
+  def cache
+    @cache ||= Dalli::Client.new(nil, compress: true, namespace: 'octostalker')
   end
 end
