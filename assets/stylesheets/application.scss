@@ -16,11 +16,11 @@ $fontTrebuchet: "Trebuchet MS", Arial, sans-serif;
 
 @font-face {
     font-family: 'Collegia';
-    src: url('collegia-webfont.eot');
-    src: url('collegia-webfont.eot?#iefix') format('embedded-opentype'),
-         url('collegia-webfont.woff') format('woff'),
-         url('collegia-webfont.ttf') format('truetype'),
-         url('collegia-webfont.svg#collegiateregular') format('svg');
+    src: url(font-path('collegia-webfont.eot'));
+    src: url(font-path('collegia-webfont.eot?#iefix')) format('embedded-opentype'),
+         url(font-path('collegia-webfont.woff')) format('woff'),
+         url(font-path('collegia-webfont.ttf')) format('truetype'),
+         url(font-path('collegia-webfont.svg#collegiateregular')) format('svg');
     font-weight: normal; font-style: normal;
 }
 
@@ -124,7 +124,7 @@ body {min-width:990px; font: normal 14px/21px "Trebuchet MS", Arial, sans-serif;
 .msg.loading { background-color: #FCF8E3; border-color: #FAEBCC; color: #8A6D3B}
 .msg.loading img {float:left; margin: 2px 5px 0 0;}
 
-#header {float:left; width:100%; height: 372px; background:#fff url("bg-topo.png") no-repeat center top;}
+#header {float:left; width:100%; height: 372px; background:#fff image-url("bg-topo.png") no-repeat center top;}
 #header .container {float:left; margin: 65px 0 0 0;}
 h1 {float:left; width:100%; text-transform: uppercase; font: normal 65px/65px $fontFamily; color:#000;}
 #header p {float:left; width:100%; font: normal 14px/21px $fontTrebuchet;}
@@ -151,13 +151,13 @@ section h2 span {float:left; margin-right:20px;}
 section h2 a {text-transform: none; margin-top: 3px;}
 
 #explain {background:#ededed; padding: 20px 0 30px 0;}
-.pata {float:left; width:52px; height: 69px; position: absolute; top:-20px; right: 80px; background: #ededed url('claw.png');}
+.pata {float:left; width:52px; height: 69px; position: absolute; top:-20px; right: 80px; background: #ededed image-url('claw.png');}
 .container {float:left; width: 50%;}
 #explain h2 {font: normal 18px/27px $fontFamily; margin-bottom: 30px; }
-.gitmark-big {float:left; width: 120px; height: 120px; background: #ededed url('mark-big.png') no-repeat left top; }
-#explain .follow {float:left; width: 80px; height: 69px; background: url('arrows.png'); margin: 25px 20px;}
+.gitmark-big {float:left; width: 120px; height: 120px; background: #ededed image-url('mark-big.png') no-repeat left top; }
+#explain .follow {float:left; width: 80px; height: 69px; background: image-url('arrows.png'); margin: 25px 20px;}
 .orgusers {float:left; width:180px;}
-.orgusers span {float:left; width: 32px; height: 32px; background: #ededed url('mark-small.png') no-repeat left top; margin: 5px;}
+.orgusers span {float:left; width: 32px; height: 32px; background: #ededed image-url('mark-small.png') no-repeat left top; margin: 5px;}
 
 #friends {float:left; width:100%; list-style:none;}
 #friends li {float:left; width: 100px; height: 100px; margin: 10px 20px 10px 0; position: relative;}
@@ -185,7 +185,7 @@ section h2 a {text-transform: none; margin-top: 3px;}
 .members h3 span {float:left; margin-right: 10px;}
 .members h3 span.size {font-size: 11px;}
 .members ul {float:left; width:100%; list-style:none; margin-top: 20px;}
-.members li {float:left; width: 70px; height: 70px; border-radius: 5px; background: #ededed url('mark-small.png') no-repeat center center; margin: 0 15px 15px 0; position: relative; }
+.members li {float:left; width: 70px; height: 70px; border-radius: 5px; background: #ededed image-url('mark-small.png') no-repeat center center; margin: 0 15px 15px 0; position: relative; }
 .members li a {float:left; width: 70px; height: 70px;border-radius:5px; overflow:hidden; }
 .members li span {float:left; width: 16px; height: 16px; position: absolute; bottom: 7px; right: 7px; }
 .members li span.yes, .members li span.follow {@include icons-sprite('ok');}
