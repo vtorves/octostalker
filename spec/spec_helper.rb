@@ -7,7 +7,7 @@ require 'capybara/poltergeist'
 require 'webmock/rspec'
 
 OmniAuth.config.test_mode = true
-WebMock.disable_net_connect!(:allow_localhost => true)
+WebMock.disable_net_connect!(allow_localhost: true)
 
 Capybara.configure do |config|
   config.app = OctostalkerApplication
@@ -47,6 +47,19 @@ module GitHubHelpers
   def stub_followers(json = [])
     stub_request(:get, "https://api.github.com/users/followers?auto_paginate=false&per_page=16").
       to_return(:status => 200, :body => json.to_json, :headers => {'Content-Type' => 'application/json'})
+  end
+
+  def app
+    OctostalkerApplication
+  end
+
+  def signin
+    visit '/'
+    mock_auth
+    stub_user
+    stub_followers
+    stub_orgs
+    click_link 'Signin with GitHub'
   end
 end
 
