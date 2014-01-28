@@ -126,12 +126,6 @@ class OctostalkerApplication < Sinatra::Base
     {success: true}.to_json
   end
 
-  post '/me.do' do
-    content_type :json
-    client or (return 403)
-    {success: client.follow('arthurnn')}.to_json
-  end
-
   error Octokit::Unauthorized do
     session.clear
     redirect to('/')
