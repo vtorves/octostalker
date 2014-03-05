@@ -12,7 +12,7 @@ gem 'rack-flash3', require: 'rack-flash'
 
 gem 'sprockets'
 gem 'sprockets-helpers'
-gem 'sprockets-sass'
+gem 'sprockets-sass', '~> 1.0.3'
 gem 'compass'
 gem 'coffee-script'
 
