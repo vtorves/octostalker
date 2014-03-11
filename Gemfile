@@ -18,7 +18,7 @@ gem 'coffee-script'
 
 gem 'activesupport', '~> 4.1.0.rc1'
 gem 'uglifier'
-gem 'octokit', '~> 2.6.3'
+gem 'octokit'
 gem 'omniauth-github'
 gem 'dalli', :require => 'rack/session/dalli'
 
