@@ -83,7 +83,7 @@ GEM
     rack-flash3 (1.0.5)
       rack
     rack-google-analytics (0.12.0)
-    rack-protection (1.5.0)
+    rack-protection (1.5.2)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -102,7 +102,7 @@ GEM
     sawyer (0.5.3)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
-    sinatra (1.4.3)
+    sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
