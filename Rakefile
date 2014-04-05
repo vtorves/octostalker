@@ -1,6 +1,5 @@
 require './octostalker'
 require 'rake/sprocketstask'
-require 'rspec/core/rake_task'
 
 Rake::SprocketsTask.new do |t|
   t.environment = OctostalkerApplication.assets
@@ -8,7 +7,10 @@ Rake::SprocketsTask.new do |t|
   t.assets      = OctostalkerApplication.precompile
 end
 
-RSpec::Core::RakeTask.new("spec") do |spec|
-  spec.pattern = "spec/**/*_spec.rb"
+if defined? RSpec
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new("spec") do |spec|
+    spec.pattern = "spec/**/*_spec.rb"
+  end
+  task :default => :spec
 end
-task :default => :spec
