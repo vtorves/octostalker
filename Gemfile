@@ -15,7 +15,7 @@ gem 'sprockets-sass', '~> 1.0.3'
 gem 'compass'
 gem 'coffee-script'
 
-gem 'activesupport', '~> 4.1.0.rc2'
+gem 'activesupport', '~> 4.1.0'
 gem 'uglifier'
 gem 'octokit'
 gem 'omniauth-github'
