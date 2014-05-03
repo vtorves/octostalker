@@ -52,11 +52,9 @@ class OctostalkerApplication < Sinatra::Base
   get '/' do
     if client
       @organizations = begin
-        client.organizations.each do |org|
-          org.rels[:avatar].href
+        if orgs = client.organizations
+          orgs.map { |o| organization_hash(o) }
         end
-        orgs = client.organizations
-        orgs.map { |o| organization_hash(o) }
       end
 
       @friends = client.followers(client.login, per_page: 16, auto_paginate: false)

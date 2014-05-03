@@ -25,7 +25,6 @@ describe 'Logging', :type => :feature, :css => true do
     before do
       visit '/'
       mock_auth
-
       stub_user
       stub_followers
       stub_orgs
