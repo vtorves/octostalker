@@ -16,7 +16,11 @@ class OctostalkerApplication < Sinatra::Base
   enable :logging
   register Sinatra::Partial
 
-  enable :sessions
+  # Use the Dalli Rack session implementation
+  use Rack::Session::Dalli, cache: Dalli::Client.new(nil,
+    compress: true,
+    namespace: 'octostalker/rack.session',
+    expires_in: 3600)
   use Rack::Flash
 
   configure(:test) { disable :logging }
@@ -51,7 +55,7 @@ class OctostalkerApplication < Sinatra::Base
 
   get '/' do
     if client
-      @organizations = begin
+      @organizations = cache.fetch("index/#{current_user[:uid]}/organizations", 36000) do
         if orgs = client.organizations
           orgs.map { |o| organization_hash(o) }
         end
@@ -96,6 +100,7 @@ class OctostalkerApplication < Sinatra::Base
   get '/organization/:org' do
     client or (return 403)
 
+    cache_control :public, :max_age => 36000
     org = params[:org]
     begin
       org = client.org(org)
@@ -175,5 +180,9 @@ class OctostalkerApplication < Sinatra::Base
       next if login == client.login
       client.follow(login)
     end
+  end
+
+  def cache
+    @cache ||= Dalli::Client.new(nil, compress: true, namespace: 'octostalker')
   end
 end

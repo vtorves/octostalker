@@ -6,6 +6,7 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-partial', require: 'sinatra/partial'
 gem 'haml'
 
+gem 'rack-cache', require: 'rack/cache'
 gem 'rack-google-analytics'
 gem 'rack-flash3', require: 'rack-flash'
 
