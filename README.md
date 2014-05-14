@@ -1,5 +1,5 @@
 # Octostalker
-[![Build Status](https://travis-ci.org/arthurnn/octostalker.png?branch=master)](https://travis-ci.org/arthurnn/octostalker)
+[![Build Status](https://travis-ci.org/arthurnn/octostalker.svg?branch=master)](https://travis-ci.org/arthurnn/octostalker)
 
 http://octostalker.com/
 
