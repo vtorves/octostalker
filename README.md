@@ -3,7 +3,7 @@
 
 http://octostalker.com/
 
-An app to follow friends and organizations on github
+An app to follow friends and organizations on GitHub
 
 ## How to run locally
 
