@@ -26,7 +26,7 @@ gem 'foreman'
 gem 'puma'
 
 group :test do
-  gem 'rspec', '~> 3.0.0.beta1'
+  gem 'rspec', '~> 3.0.0.rc1'
   gem 'poltergeist'
   gem 'webmock'
 end
