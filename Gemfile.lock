@@ -91,8 +91,6 @@ GEM
     puma (2.8.2)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
-    rack-cache (1.2)
-      rack (>= 0.4)
     rack-flash3 (1.0.5)
       rack
     rack-google-analytics (1.1.0)
@@ -164,7 +162,6 @@ DEPENDENCIES
   omniauth-github
   poltergeist
   puma
-  rack-cache
   rack-flash3
   rack-google-analytics
   rspec (~> 3.0.0)
