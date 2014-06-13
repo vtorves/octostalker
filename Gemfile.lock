@@ -100,18 +100,18 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rspec (3.0.0)
-      rspec-core (~> 3.0.0)
-      rspec-expectations (~> 3.0.0)
-      rspec-mocks (~> 3.0.0)
-    rspec-core (3.0.0)
-      rspec-support (~> 3.0.0)
-    rspec-expectations (3.0.0)
+    rspec (3.0.0.rc1)
+      rspec-core (= 3.0.0.rc1)
+      rspec-expectations (= 3.0.0.rc1)
+      rspec-mocks (= 3.0.0.rc1)
+    rspec-core (3.0.0.rc1)
+      rspec-support (= 3.0.0.rc1)
+    rspec-expectations (3.0.0.rc1)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.0.0)
-    rspec-mocks (3.0.1)
-      rspec-support (~> 3.0.0)
-    rspec-support (3.0.0)
+      rspec-support (= 3.0.0.rc1)
+    rspec-mocks (3.0.0.rc1)
+      rspec-support (= 3.0.0.rc1)
+    rspec-support (3.0.0.rc1)
     safe_yaml (1.0.3)
     sass (3.2.19)
     sawyer (0.5.4)
@@ -164,7 +164,7 @@ DEPENDENCIES
   puma
   rack-flash3
   rack-google-analytics
-  rspec (~> 3.0.0)
+  rspec (~> 3.0.0.rc1)
   sinatra
   sinatra-partial
   sprockets

@@ -24,6 +24,8 @@ gem 'dalli', :require => 'rack/session/dalli'
 gem 'foreman'
 gem 'puma'
 
-gem 'rspec', '~> 3.0.0'
-gem 'poltergeist'
-gem 'webmock'
+group :test do
+  gem 'rspec', '~> 3.0.0.rc1'
+  gem 'poltergeist'
+  gem 'webmock'
+end
