@@ -17,7 +17,7 @@ class OctostalkerApplication < Sinatra::Base
   register Sinatra::Partial
 
   # Use the Dalli Rack session implementation
-  use Rack::Session::Dalli, cache: Dalli::Client.new(nil,
+  use Rack::Session::Dalli, cache: Dalli::Client.new(ENV['MEMCACHE_SERVERS'],
     compress: true,
     namespace: 'octostalker/rack.session',
     expires_in: 3600)
@@ -183,6 +183,6 @@ class OctostalkerApplication < Sinatra::Base
   end
 
   def cache
-    @cache ||= Dalli::Client.new(nil, compress: true, namespace: 'octostalker')
+    @cache ||= Dalli::Client.new(ENV['MEMCACHE_SERVERS'], compress: true, namespace: 'octostalker')
   end
 end

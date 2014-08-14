@@ -2,8 +2,8 @@ require './octostalker'
 
 use Rack::Cache, {
   verbose: false,
-  metastore: 'memcached://localhost:11211/octostalker/meta',
-  entitystore: 'memcached://localhost:11211/octostalker/body'
+  metastore: "memcached://#{ENV['MEMCACHE_SERVERS']}/octostalker/meta",
+  entitystore: "memcached://#{ENV['MEMCACHE_SERVERS']}/octostalker/body"
 }
 use Rack::GoogleAnalytics, tracker: 'UA-46349409-1'
 
