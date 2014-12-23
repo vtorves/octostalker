@@ -33,6 +33,6 @@ open [http://localhost:4567](http://localhost:4567)
 
 ## Credits
 
-[@luanmuniz](https://github.com/luanmuniz) - For the frontend help  
+[@luanmuniz](https://github.com/luanmuniz) - For the frontend + design  
 @jsncostello - For the octocat
 
