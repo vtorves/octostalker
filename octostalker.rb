@@ -4,7 +4,7 @@ Bundler.require
 require './octokit_ext'
 
 class OctostalkerApplication < Sinatra::Base
-  MEMCACHED_ADDR = ENV['MEMCACHE_PORT_11211_TCP_ADDR'] || "localhost"
+  MEMCACHED_ADDR = ENV['MEMCACHED_URL'] || "localhost:11211"
 
   set :root, File.dirname(__FILE__)
   set :assets, Sprockets::Environment.new(root)
@@ -19,7 +19,7 @@ class OctostalkerApplication < Sinatra::Base
   register Sinatra::Partial
 
   # Use the Dalli Rack session implementation
-  use Rack::Session::Dalli, cache: Dalli::Client.new("#{MEMCACHED_ADDR}:11211",
+  use Rack::Session::Dalli, cache: Dalli::Client.new(MEMCACHED_ADDR,
     compress: true,
     namespace: 'octostalker/rack.session',
     expires_in: 3600)
@@ -185,7 +185,7 @@ class OctostalkerApplication < Sinatra::Base
   end
 
   def cache
-    @cache ||= Dalli::Client.new("#{MEMCACHED_ADDR}:11211", compress: true, namespace: 'octostalker')
+    @cache ||= Dalli::Client.new(MEMCACHED_ADDR, compress: true, namespace: 'octostalker')
   end
 
 end
