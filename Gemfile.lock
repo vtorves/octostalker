@@ -54,7 +54,7 @@ GEM
     hashie (2.1.1)
     hike (1.2.3)
     i18n (0.6.9)
-    json (1.8.1)
+    json (1.8.3)
     jwt (1.0.0)
     mime-types (2.3)
     mini_portile (0.6.0)
@@ -175,3 +175,6 @@ DEPENDENCIES
   sprockets-sass (~> 1.0.3)
   uglifier
   webmock
+
+BUNDLED WITH
+   1.11.2
