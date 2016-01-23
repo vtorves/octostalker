@@ -1,17 +1,18 @@
 #!/usr/bin/env puma
 
-
+app_home = '/var/octostalker'
 environment 'production'
 
 daemonize
 
-pidfile '/var/octostalker/pids/puma.pid'
+pidfile "#{app_home}/pids/puma.pid"
+state_path "#{app_home}/pids/puma.state"
 
-state_path '/var/octostalker/pids/puma.state'
+stdout_redirect "#{app_home}/logs/stdout", "#{app_home}/logs/stderr", true
 
 threads 0, 4
 
-bind 'unix:///var/octostalker/puma.sock'
+bind "unix://#{app_home}/puma.sock"
 
 # Preload the application before starting the workers; this conflicts with
 # phased restart feature. (off by default)
