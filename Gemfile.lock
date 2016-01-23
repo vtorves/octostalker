@@ -153,7 +153,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport
   coffee-script
   compass
   dalli
