@@ -8,8 +8,6 @@ if memcached = ENV['MEMCACHE_PORT_11211_TCP_ADDR']
   }
 end
 
-use Rack::GoogleAnalytics, tracker: 'UA-46349409-1'
-
 map OctostalkerApplication.assets_prefix do
   run OctostalkerApplication.assets
 end
